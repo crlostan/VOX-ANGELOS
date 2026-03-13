@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Login</h2>
+    <form action="/" method="POST">
+        Email: <input type="email" name="email" placeholder="Enter email" required><br><br>
+        Password: <input type="password" name="password" placeholder="Enter password" required><br><br>
+        
+        <button type="submit">Log In</button>
+        <p>No account? <a href="{{ url_for('step1') }}">Sign Up first.</a></p>
+    </form>
+</body>
+</html>
