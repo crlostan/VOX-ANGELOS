@@ -1,0 +1,208 @@
+/* ── TOKENS ── */
+:root {
+    --color-navy: #00004d;
+    --color-blue: #0066cc;
+    --color-cyan: #00b3e6;
+    --color-light: #80dfff;
+    --color-ice: #ccf2ff;
+
+    --bg: var(--color-navy);
+    --accent: var(--color-blue);
+    --glow: var(--color-cyan);
+    --bright: var(--color-light);
+    --white: var(--color-ice);
+    --sub: rgba(128, 223, 255, 0.42);
+    --grid: rgba(0, 179, 230, 0.15);
+
+    --fs-micro: clamp(0.6rem, 0.85vw, 0.75rem);
+    --fs-body: clamp(0.85rem, 1.5vw, 0.95rem);
+    --fs-title: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* ── BASE & BACKGROUND ── */
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    position: relative;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 58% at 50% 40%, rgba(0, 102, 204, 0.25) 0%, rgba(0, 0, 77, 0.8) 55%, transparent 80%);
+    z-index: -2;
+}
+
+.bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+}
+
+/* ── TECH CONTAINER ── */
+.tech-wrapper {
+    position: relative;
+    background: rgba(0, 0, 77, 0.65);
+    border: 1px solid rgba(0, 179, 230, 0.25);
+    box-shadow: 0 0 40px rgba(0, 102, 204, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    max-width: 900px;
+    width: 100%;
+    margin: 2rem;
+}
+
+/* ── CORNER ACCENTS ── */
+.corner {
+    position: absolute;
+    width: clamp(16px, 2.8vw, 30px);
+    height: clamp(16px, 2.8vw, 30px);
+    pointer-events: none;
+}
+.corner::before, .corner::after {
+    content: ''; position: absolute;
+    background: var(--bright); opacity: 0.8;
+}
+.corner::before { width: 100%; height: 2px; top: 0; left: 0; }
+.corner::after  { width: 2px; height: 100%; top: 0; left: 0; }
+
+.c-tl { top: -1px; left: -1px; }
+.c-tr { top: -1px; right: -1px; transform: scaleX(-1); }
+.c-bl { bottom: -1px; left: -1px; transform: scaleY(-1); }
+.c-br { bottom: -1px; right: -1px; transform: scale(-1, -1); }
+
+/* ── PANELS ── */
+.panel-left {
+    padding: 4rem;
+    border-right: 1px solid rgba(0, 179, 230, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(90deg, rgba(0, 102, 204, 0.08), transparent);
+}
+
+.panel-right {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ── TYPOGRAPHY ── */
+.title {
+    font-family: 'Oswald', sans-serif;
+    font-size: var(--fs-title);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.1;
+    text-shadow: 0 0 30px rgba(0, 179, 230, 0.3);
+    margin: 0;
+}
+
+.eyebrow {
+    font-family: 'Syne Mono', monospace;
+    font-size: var(--fs-micro);
+    letter-spacing: .44em;
+    text-transform: uppercase;
+    color: var(--sub);
+    margin-bottom: 1rem;
+}
+
+/* ── INPUTS ── */
+.form-text-label {
+    font-family: 'Syne Mono', monospace;
+    font-size: var(--fs-micro);
+    letter-spacing: 0.15em;
+    color: var(--bright);
+    text-transform: uppercase;
+}
+
+.tech-input {
+    background: rgba(0, 0, 77, 0.4) !important;
+    border: 1px solid rgba(0, 179, 230, 0.2) !important;
+    color: var(--white) !important;
+    font-family: 'Syne Mono', monospace;
+    padding: 12px 16px;
+    border-radius: 0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.tech-input::placeholder {
+    color: rgba(128, 223, 255, 0.3) !important;
+}
+
+.tech-input:focus {
+    border-color: var(--glow) !important;
+    box-shadow: 0 0 20px rgba(0, 179, 230, 0.2);
+    outline: none;
+    background: rgba(0, 0, 77, 0.6) !important;
+}
+
+/* ── CTA BUTTON ── */
+.cta {
+    position: relative;
+    gap: clamp(.5rem,1.2vw,.8rem);
+    padding: clamp(.5rem,1.4vw,.7rem) clamp(1rem,3vw,2rem);
+    font-family: 'Oswald', sans-serif;
+    font-size: var(--fs-body);
+    font-weight: 500;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--white) !important;
+    border: 1px solid rgba(0, 179, 230, 0.3) !important;
+    background: rgba(0, 102, 204, 0.1) !important;
+    border-radius: 0 !important;
+    transition: border-color .3s, background .3s, box-shadow .3s !important;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cta:hover {
+    border-color: rgba(0, 179, 230, 0.66) !important;
+    background: rgba(0, 102, 204, 0.25) !important;
+    box-shadow: 0 0 28px rgba(0, 179, 230, 0.15) !important;
+}
+
+.cta-arr {
+    display: inline-flex; align-items: center;
+    position: relative; flex-shrink: 0;
+}
+.cta-arr::before {
+    content: ''; display: block;
+    width: 13px; height: 1px;
+    background: var(--bright);
+    transition: width .3s;
+}
+.cta-arr::after {
+    content: ''; position: absolute; right: -1px;
+    width: 5px; height: 5px;
+    border-top: 1px solid var(--bright);
+    border-right: 1px solid var(--bright);
+    transform: rotate(45deg) translate(-1px, 1px);
+}
+.cta:hover .cta-arr::before { width: 20px; }
+
+/* ── LINKS ── */
+.tech-link {
+    color: var(--glow);
+    text-decoration: none;
+    transition: 0.3s;
+}
+.tech-link:hover {
+    color: var(--white);
+    text-shadow: 0 0 8px var(--glow);
+}

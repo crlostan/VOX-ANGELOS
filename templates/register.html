@@ -1,20 +1,87 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vox Angelos — Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Syne+Mono&family=Barlow:wght@300;400&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+</head>
 <body>
-    <h2>Step 1: Basic Information</h2>
-    <form action="/step2" method="POST">
-        First Name: <input type="text" name="first_name" required><br><br>
-        Middle Name: <input type="text" name="middle_name"><br><br>
-        Last Name: <input type="text" name="last_name" required><br><br>
-        Phone Number: <input type="tel" name="phone" placeholder="+63 9XXXXXXXXX" required><br><br>
-        Email: <input type="email" name="email" required><br><br>
 
-        <button type="submit">Next</button>
-    </form>
+  <div class="bg"></div>
+  <div class="bg-grid"></div>
 
-    <p>Already have an account? <a href="{{ url_for('login') }}">Login here.</a></p>
-</a>
+  <div class="tech-wrapper row g-0">
+
+    <!-- Corner accents -->
+    <div class="corner c-tl"></div>
+    <div class="corner c-tr"></div>
+    <div class="corner c-bl"></div>
+    <div class="corner c-br"></div>
+
+    <!-- Left panel: branding -->
+    <div class="col-md-5 panel-left">
+      <div class="eyebrow mb-2">Citizen Registration</div>
+      <h1 class="title">Create<br>Account</h1>
+      <div class="eyebrow mt-3">Step 1 of 2</div>
+      <p style="color: var(--sub); font-size: var(--fs-micro); margin-top: 1.5rem; line-height: 1.8;">
+        Provide your basic information to begin the registration process. Your data is encrypted and secured.
+      </p>
+    </div>
+
+    <!-- Right panel: form -->
+    <div class="col-md-7 panel-right">
+      <div class="eyebrow mb-4">Basic Information</div>
+
+      <form action="/step2" method="POST">
+
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-text-label mb-1 d-block">First Name</label>
+            <input type="text" name="first_name" class="tech-input form-control"
+                   placeholder="Juan" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-text-label mb-1 d-block">Middle Name</label>
+            <input type="text" name="middle_name" class="tech-input form-control"
+                   placeholder="Optional">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-text-label mb-1 d-block">Last Name</label>
+          <input type="text" name="last_name" class="tech-input form-control"
+                 placeholder="Dela Cruz" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-text-label mb-1 d-block">Phone Number</label>
+          <input type="tel" name="phone" class="tech-input form-control"
+                 placeholder="+63 9XXXXXXXXX" required>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-text-label mb-1 d-block">Email Address</label>
+          <input type="email" name="email" class="tech-input form-control"
+                 placeholder="juan@example.com" required>
+        </div>
+
+        <button type="submit" class="cta mb-3" style="width:100%;">
+          Next <span class="cta-arr ms-2"></span>
+        </button>
+
+        <p class="text-center mt-3" style="font-size: var(--fs-micro); color: var(--sub);">
+          Already have an account?
+          <a href="{{ url_for('login') }}" class="tech-link">Login here.</a>
+        </p>
+
+      </form>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

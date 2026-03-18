@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_admin.css') }}">
 </head>
-<body>
-    <h1>Welcome to your Dashboard, Admin!</h1>
 
-    <br><br>
-    <a href="{{ url_for('logout') }}">
-        <button type="button">Logout</button>
-    </a>
+<body>
+    <div class="app-shell">
+        <aside class="side-nav">
+            <div class="side-nav__menu">
+                <button type="button">Dashboard</button>
+                <button type="button">User Accounts</button>
+                <button type="button">Review Projects</button>
+            </div>
+
+            <div class="side-nav__footer">
+                <a href="{{ url_for('logout') }}">
+                    <button type="button">Logout</button>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1>Welcome to your Dashboard, Admin!</h1>
+            <hr>
+            <!-- Main content goes here -->
+        </main>
+    </div>
 </body>
+
 </html>

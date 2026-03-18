@@ -61,10 +61,15 @@ def roles_required(*allowed_roles):
         return decorator
     return wrapper
 
-# --- AUTH ROUTES ---
+# --- ROUTES ---
 
-# 1. ROOT ROUTE: Now points to Login
-@app.route('/', methods=['GET', 'POST'])
+# 1. ROOT ROUTE: Landing Page (index)
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+# 2. LOGIN
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -104,18 +109,18 @@ def login():
     # If GET, show login page
     return render_template('login.html')
 
-# 2. START REGISTRATION (Step 1)
+# 3. START REGISTRATION (Step 1)
 @app.route('/signup')
 def step1():
     return render_template('register.html')
 
-# 3. PASSWORD & ID (Step 2)
+# 4. PASSWORD & ID (Step 2)
 @app.route('/step2', methods=['POST'])
 def step2():
     data = request.form.to_dict()
     return render_template('password.html', data=data)
 
-# 4. FINAL REGISTRATION ACTION
+# 5. FINAL REGISTRATION ACTION
 @app.route('/register', methods=['POST'])
 def register():
     fname = request.form.get('first_name')
@@ -150,7 +155,6 @@ def register():
         db.commit()
         cursor.close()
         db.close()
-        # Redirect back to the root (login page)
         return redirect(url_for('login'))
     except mysql.connector.Error as err:
         return f"Database Error: {err}"
